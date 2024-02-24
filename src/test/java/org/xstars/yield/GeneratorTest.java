@@ -15,7 +15,7 @@ public class GeneratorTest {
 
     /**
      * 测试主入口点。
-     * 
+     *
      * @param args 程序启动参数。
      */
     public static void main(String[] args) {
@@ -25,7 +25,7 @@ public class GeneratorTest {
 
     /**
      * 生成一定范围的整数序列。
-     * 
+     *
      * @param max 整数序列的最大值。
      * @return 从 0 到 {@code max} - 1 的整数序列。
      */

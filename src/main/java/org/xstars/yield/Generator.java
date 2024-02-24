@@ -5,11 +5,11 @@ import java.util.NoSuchElementException;
 
 /**
  * 表示一个生成器，可实现迭代惰性求值。
- * 
+ *
  * @param <E> 生成器的生成的元素的类型。
  */
 public abstract class Generator<E>
-implements AutoCloseable, Cloneable, Runnable, Iterable<E>, Iterator<E> {
+        implements AutoCloseable, Cloneable, Runnable, Iterable<E>, Iterator<E> {
     /**
      * 指示生成线程是否已经启动。
      */
@@ -21,7 +21,8 @@ implements AutoCloseable, Cloneable, Runnable, Iterable<E>, Iterator<E> {
     private volatile boolean hasCurrent;
 
     /**
-     * 指示生成器是否已经生成了当前元素。 用于确定 {@link #hasNext()} 和 {@link #next()} 方法的行为。
+     * 指示生成器是否已经生成了当前元素。
+     * 用于确定 {@link #hasNext()} 和 {@link #next()} 方法的行为。
      */
     private volatile boolean hasMoved;
 
@@ -45,6 +46,7 @@ implements AutoCloseable, Cloneable, Runnable, Iterable<E>, Iterator<E> {
     /**
      * 在回收当前实例前调用，执行清理操作。
      */
+    @SuppressWarnings("deprecation")
     @Override
     protected void finalize() throws Throwable {
         this.close();
@@ -68,7 +70,7 @@ implements AutoCloseable, Cloneable, Runnable, Iterable<E>, Iterator<E> {
 
     /**
      * 返回当前生成器对应的迭代器对象。
-     * 
+     *
      * @return 当前生成器对应的迭代器对象。
      */
     @Override
@@ -78,7 +80,7 @@ implements AutoCloseable, Cloneable, Runnable, Iterable<E>, Iterator<E> {
 
     /**
      * 指示生成器是否还有未生成的元素。
-     * 
+     *
      * @return 若生成器还有未生成的元素，则为 {@code true}；否则为 {@code false}。
      */
     @Override
@@ -91,7 +93,7 @@ implements AutoCloseable, Cloneable, Runnable, Iterable<E>, Iterator<E> {
 
     /**
      * 返回生成器的下一个元素。
-     * 
+     *
      * @return 生成器的下一个元素。
      */
     @Override
@@ -158,7 +160,7 @@ implements AutoCloseable, Cloneable, Runnable, Iterable<E>, Iterator<E> {
 
     /**
      * 生成一个新的元素。
-     * 
+     *
      * @param e 要生成的新元素。
      */
     protected final void yield(E e) {
@@ -171,7 +173,7 @@ implements AutoCloseable, Cloneable, Runnable, Iterable<E>, Iterator<E> {
 
     /**
      * 将生成器移动到下一个元素的位置，并返回是否成功移动。
-     * 
+     *
      * @return 若生成器还有未生成的元素，则为 {@code true}；否则为 {@code false}。
      */
     private final boolean moveNext() {
